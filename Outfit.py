@@ -60,10 +60,11 @@ class Outfit:
                 self.getJacket()
 
         elif (self.weather["cond"]=="rain") or (self.weather["cond"]=="snow"):
+            self.getJacket()
             for top in alltops:
                 if any(s in top[1] for s in tops):
                     matches.append(top[0])
-            self.getJacket()            
+                      
         elif (self.weather["cond"]=="snow"):
             for top in alltops:
                 if any(s in top[1] for s in tops):
@@ -151,12 +152,12 @@ class Outfit:
         elif (self.weather["cond"]=="rain") or (self.weather["cond"]=="snow"):
             for jac in alljacs:
                 if any(s in jac[1] for s in ["coat", "snowsuit", "jacket","sweater"]):
-                    matches.append(jac[0])         
+                    matches.append(jac[0])
         elif (self.weather["cond"]=="snow"):
             for jac in alljacs:
                 if any(s in jac[1] for s in ["coat", "jacket","sweater"]):
                     matches.append(jac[0])
-        matches = self.jackets
+        self.jackets = matches
 
     def getDress(self):
         matches = []
@@ -164,9 +165,9 @@ class Outfit:
 
     def makeOutfit(self, t, b, j):
         if t:
-	    self.outfit["top"] = random.choice(t)
+            self.outfit["top"] = random.choice(t)
         if b:
-	    self.outfit["bottoms"] = random.choice(b)
+            self.outfit["bottoms"] = random.choice(b)
         if j:
             self.outfit["jacket"] = random.choice(j)
     
